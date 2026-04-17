@@ -21,6 +21,12 @@ func (v *ViewController) Init() {
 	// v.logInTemplate = template.Must(template.ParseFiles("views/login.html"))	
 	v.Router = chi.NewRouter()
 	v.Router.Get("/", v.Home)
+	v.Router.Get("/log-in", v.LogIn)
+	v.Router.Get("/sign-out", v.SignOut)
+	v.Router.Post("/log-in", v.HandleLogIn)
+	// v.Router.Get("/talent-show", v.TalentShow)
+	// v.Router.Post("/talent-show/score", v.UpdateTalentScore)
+	// v.Router.Get("/point-totals", v.PointTotals)
 	// v.Router.Get("/login", v.LogIn)
 }
 
