@@ -9,6 +9,48 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+// Hardcoded users
+var allowedUsers = map[string]bool{
+	"jennamandelricci": true,
+	"asisatmuldoon":    true,
+	"midrenelamy":      true,
+	"adonisbrown":      true,
+	"lindalaul":        true,
+}
+
+var actualNames = map[string]string{
+	"jennamandelricci": "Jenna Mandel-ricci",
+	"asisatmuldoon":    "Asisat Muldoon",
+	"midrenelamy":      "Midrene Lamy",
+	"adonisbrown":      "Adonis Brown",
+	"lindalaul":        "Linda Laul",
+}
+
+// judge -> talent -> score
+var scores = map[string]map[string]float64{}
+
+var talentNames = []string{
+	"Kiefer Inson",
+	"CAYENNE NO_LUCK aka Justin Jacob",
+	"Grand Concourse TOP",
+	"Money",
+	"Rachel Fonseca & Sophie Thurschwell",
+	"Woody Tanor",
+	
+}
+
+type TalentCard struct {
+	ID    int
+	Name  string
+	Score float64
+}
+
+type TalentTotal struct {
+	Index int
+	Name  string
+	Score float64
+}
+
 type ViewController struct{
 	templates        map[string]*template.Template
 	// logInTemplate    *template.Template
