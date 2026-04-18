@@ -57,10 +57,23 @@ type ViewController struct{
 	Router           *chi.Mux
 }
 
+func getScore(user, name string) float64 {
+	if scores[user] == nil {
+		return 10.0
+	}
+	val, exists := scores[user][name]
+	if !exists {
+		return 10.0
+	}
+	return val
+}
+
 func (v *ViewController) Init() {
 	v.templates = make(map[string]*template.Template)
 	v.templates["home"] = template.Must(template.ParseFiles("views/home.html"))
 	// v.logInTemplate = template.Must(template.ParseFiles("views/login.html"))	
+	// 	v.logInTemplate = template.Must(template.ParseFiles("templates/LogIn.html"))
+
 	v.Router = chi.NewRouter()
 	v.Router.Get("/", v.Home)
 	v.Router.Get("/log-in", v.LogIn)
